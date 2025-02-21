@@ -1,51 +1,72 @@
 
-row5 = ["$10","$10","$10","$10","$10","$10","$10","$10","$10","$10"]
-row4 = ["$10","$10","$10","$10","$20","$20","$10","$10","$10","$10"]
-row3 = ["$20","$20","$20","$30","$30","$30","$30","$20","$20","$20"]
-row2 = ["$30","$30","$30","$30","$40","$40","$30","$30","$30","$30"]
-row1 = ["$50","$50","$50","$50","$50","$50","$50","$50","$50","$50"]
+row1 = ['$40', '$50', '$50', '$50', '$50', '$50', '$50', '$40']
+row2 = ['$30', '$30', '$40', '$50', '$50', '$40', '$30', '$30']
+row3 = ['$20', '$30', '$30', '$40', '$40', '$30', '$30', '$20']
+row4 = ['$10', '$20', '$20', '$20', '$20', '$20', '$20', '$10']
+row5 = ['$10', '$20', '$20', '$20', '$20', '$20', '$20', '$10']
+row6 = ['$10', '$20', '$20', '$20', '$20', '$20', '$20', '$10']
+row7 = ['$10', '$10', '$10', '$10', '$10', '$10', '$10', '$10']
+row8 = ['$10', '$10', '$10', '$10', '$10', '$10', '$10', '$10']
+row9 = ['$10', '$10', '$10', '$10', '$10', '$10', '$10', '$10']
 
 
-theatreTickets = row1 + row2 + row3 + row4 + row5
+def seats():
+    print("".join(row9))
+    print("".join(row8))
+    print("".join(row7))
+    print("".join(row6))
+    print("".join(row5))
+    print("".join(row4))
+    print("".join(row3))
+    print("".join(row2))
+    print("".join(row1))
+    
 
 while True:
-    print("      1      2      3      4      5      6       7      8       9      10")
-    print(f"5 {row5}")
-    print(f"4 {row4}")
-    print(f"3 {row3}")
-    print(f"2 {row2}")
-    print(f"1 {row1}")
-
-    print("What seat would you like? please select 1-5") 
-    userinputrow = int(input())
-    print("What column would you like? please select 1-10")
-    userinputcolumn = int(input()) - 1
-
-    if userinputrow == "5":
-        row5[userinputcolumn] = "X"
-        continue
-    elif userinputrow == "4":
-        row4[userinputcolumn] = "X"
-        continue
-    elif userinputrow == "3":
-        row3[userinputcolumn] = "X"
-        continue
-    elif userinputrow == "2":
-        row2[userinputcolumn] = "X"
-        continue
-    elif userinputrow == "1":
-        row1[userinputcolumn] = "X"
-        continue
-   
+    print("What seat would you like?. Please select row 1-9:")
+    userinputrow = input().strip().lower()
+    print("What column would you like? Please select column 1-8:")
         
-
-    print("      1      2      3      4      5      6       7      8       9      10")
-    print(f"5 {row5}")
-    print(f"4 {row4}")
-    print(f"3 {row3}")
-    print(f"2 {row2}")
-    print(f"1 {row1}")
-
+    userinputcolumn = int(input()) - 1  
+            
+    if userinputcolumn < 0 or userinputcolumn > 7:
+                print("Invalid column. Please select a column between 1 and 8.")
+                continue
+            
+            
+    if userinputrow == 9:
+        row9[userinputcolumn] = "X"
+    elif userinputrow == 8:
+        row8[userinputcolumn] = "X"
+    elif userinputrow == 7:
+        row7[userinputcolumn] = "X"
+    elif userinputrow == 6:
+        row6[userinputcolumn] = "X"
+    elif userinputrow == 5:
+        row5[userinputcolumn] = "X"
+    elif userinputrow == 4:
+        row4[userinputcolumn] = "X"
+    elif userinputrow == 3:
+        row3[userinputcolumn] = "X"
+    elif userinputrow == 2:
+        row2[userinputcolumn] = "X"
+    elif userinputrow == 1:
+        row1[userinputcolumn] = "X"
+        
+    
+    
+    
+    print(f" {row9}")
+    print(f" {row8}")
+    print(f" {row7}")
+    print(f" {row6}")
+    print(f" {row5}")
+    print(f" {row4}")
+    print(f" {row3}")
+    print(f" {row2}")
+    print(f" {row1}")
+    
+    
     print("Would you like to purchase more tickets? Y/N")
     userinput = input().lower()
 
@@ -53,5 +74,6 @@ while True:
         continue
     elif userinput == "n":
         break
-
-
+    else:
+        print("Invalid input, exiting.")
+        break
