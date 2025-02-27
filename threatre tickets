@@ -1,4 +1,3 @@
-
 row1 = ['$40', '$50', '$50', '$50', '$50', '$50', '$50', '$40']
 row2 = ['$30', '$30', '$40', '$50', '$50', '$40', '$30', '$30']
 row3 = ['$20', '$30', '$30', '$40', '$40', '$30', '$30', '$20']
@@ -11,68 +10,95 @@ row9 = ['$10', '$10', '$10', '$10', '$10', '$10', '$10', '$10']
 
 
 def seats():
-    print("".join(row9))
-    print("".join(row8))
-    print("".join(row7))
-    print("".join(row6))
-    print("".join(row5))
-    print("".join(row4))
-    print("".join(row3))
-    print("".join(row2))
-    print("".join(row1))
-    
+    print(" ".join(row9))
+    print(" ".join(row8))
+    print(" ".join(row7))
+    print(" ".join(row6))
+    print(" ".join(row5))
+    print(" ".join(row4))
+    print(" ".join(row3))
+    print(" ".join(row2))
+    print(" ".join(row1))
+
+
+def sell_out_theatre():
+    """Sell out the entire theatre by marking all seats as sold ('X')."""
+    global row1, row2, row3, row4, row5, row6, row7, row8, row9
+    row1 = ['X'] * 8
+    row2 = ['X'] * 8
+    row3 = ['X'] * 8
+    row4 = ['X'] * 8
+    row5 = ['X'] * 8
+    row6 = ['X'] * 8
+    row7 = ['X'] * 8
+    row8 = ['X'] * 8
+    row9 = ['X'] * 8
+
 
 while True:
-    print("What seat would you like?. Please select row 1-9:")
+    print("What seat would you like? Please select row 1-9:")
+    
+    # Get and validate row input
     userinputrow = input().strip().lower()
+    
+    if userinputrow.isdigit():
+        userinputrow = int(userinputrow)
+        if userinputrow < 1 or userinputrow > 9:
+            print("Invalid row. Please select a row between 1 and 9.")
+            continue
+    else:
+        print("Invalid input. Please select a number between 1 and 9 for the row.")
+        continue
+    
     print("What column would you like? Please select column 1-8:")
-        
-    userinputcolumn = int(input()) - 1  
-            
-    if userinputcolumn < 0 or userinputcolumn > 7:
-                print("Invalid column. Please select a column between 1 and 8.")
-                continue
-            
-            
-    if userinputrow == 9:
-        row9[userinputcolumn] = "X"
-    elif userinputrow == 8:
-        row8[userinputcolumn] = "X"
-    elif userinputrow == 7:
-        row7[userinputcolumn] = "X"
-    elif userinputrow == 6:
-        row6[userinputcolumn] = "X"
-    elif userinputrow == 5:
-        row5[userinputcolumn] = "X"
-    elif userinputrow == 4:
-        row4[userinputcolumn] = "X"
-    elif userinputrow == 3:
-        row3[userinputcolumn] = "X"
+    
+    # Get and validate column input
+    userinputcolumn = input().strip()
+    
+    if userinputcolumn.isdigit():
+        userinputcolumn = int(userinputcolumn) - 1  # Adjust for 0-based index
+        if userinputcolumn < 0 or userinputcolumn > 7:
+            print("Invalid column. Please select a column between 1 and 8.")
+            continue
+    else:
+        print("Invalid input. Please enter a valid column number.")
+        continue
+    
+    # Update the seat with an 'X'
+    if userinputrow == 1:
+        row1[userinputcolumn] = "X"
     elif userinputrow == 2:
         row2[userinputcolumn] = "X"
-    elif userinputrow == 1:
-        row1[userinputcolumn] = "X"
-        
+    elif userinputrow == 3:
+        row3[userinputcolumn] = "X"
+    elif userinputrow == 4:
+        row4[userinputcolumn] = "X"
+    elif userinputrow == 5:
+        row5[userinputcolumn] = "X"
+    elif userinputrow == 6:
+        row6[userinputcolumn] = "X"
+    elif userinputrow == 7:
+        row7[userinputcolumn] = "X"
+    elif userinputrow == 8:
+        row8[userinputcolumn] = "X"
+    elif userinputrow == 9:
+        row9[userinputcolumn] = "X"
+
+    # Print updated seating arrangement
+    seats()
     
-    
-    
-    print(f" {row9}")
-    print(f" {row8}")
-    print(f" {row7}")
-    print(f" {row6}")
-    print(f" {row5}")
-    print(f" {row4}")
-    print(f" {row3}")
-    print(f" {row2}")
-    print(f" {row1}")
-    
-    
-    print("Would you like to purchase more tickets? Y/N")
+    # Ask if the user wants to continue or sell out the theatre
+    print("Would you like to purchase more tickets (Y/N) or sell out the theatre (S)?")
     userinput = input().lower()
 
     if userinput == "y":
         continue
     elif userinput == "n":
+        break
+    elif userinput == "s":
+        sell_out_theatre()
+        print("The entire theatre has been sold out!")
+        seats()  # Print the theatre after it's sold out
         break
     else:
         print("Invalid input, exiting.")
