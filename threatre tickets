@@ -36,6 +36,8 @@ def sell_out_theatre():
 
 
 while True:
+    seats()
+    print()
     print("What seat would you like? Please select row 1-9:")
     
     # Get and validate row input
